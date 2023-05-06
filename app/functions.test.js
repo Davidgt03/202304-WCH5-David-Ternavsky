@@ -94,6 +94,19 @@ describe("Given the function length", () => {
       expect(resultReturned).toBe(expectedResult);
     });
   });
+  describe("Given the function some", () => {
+    describe("When given the array of 1,2,3  and another one with 4 ,5", () => {
+      test("Then it should return a 4 ", () => {
+        const array = [1, 2, 3];
+        const newNumbers = 4;
+
+        const expectedResult = 4;
+        const resultReturned = unshift(array, newNumbers);
+
+        expect(resultReturned).toBe(expectedResult);
+      });
+    });
+  });
 });
 
 describe("Given the function newSome", () => {
