@@ -1,7 +1,7 @@
 const length = (array) => {
   let position = 0;
 
-  for (const element in array) {
+  for (const i in array) {
     if (array) position++;
   }
 
