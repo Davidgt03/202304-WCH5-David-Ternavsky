@@ -17,18 +17,6 @@ const push = (array, ...newElement) => {
   return array.length;
 };
 
-const filter = (array, argument) => {
-  for (let i = 0; i < i.length; i++) {
-    for (let j = 0; j[i] < j.length; j++) {
-      if (array[i][j] <= argument) {
-        return array;
-      }
-    }
-  }
-};
-
-console.log(filter([3, 7], 5));
-
 const pop = (array) => {
   if (array.length === 0) {
     return undefined;
@@ -83,4 +71,27 @@ const every = (array, callBack) => {
   return isVeridic;
 };
 
-export { length, push, pop, shift, unshift, some, every };
+const find = (array, callBack) => {
+  for (let i = 1; i < array.length; i++) {
+    const element = array[i];
+    if (callBack(element) === true) {
+      return element;
+    }
+  }
+
+  return false;
+};
+
+const filter = (array, callBack) => {
+  const filteredItems = [];
+  for (let i = 1; i < array.length; i++) {
+    const element = array[i];
+    if (callBack(element) === true) {
+      push(filteredItems, element);
+    }
+  }
+
+  return filteredItems;
+};
+
+export { length, push, pop, shift, unshift, some, every, find, filter };
