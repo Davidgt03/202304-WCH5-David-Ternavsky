@@ -1,4 +1,4 @@
-import { length, push, pop, shift, unshift, some } from "./index.js";
+import { length, push, pop, shift, unshift, some } from "./functions.js";
 
 describe("Given the function length", () => {
   describe("When given the array of 1, 2 ,3", () => {
@@ -34,6 +34,17 @@ describe("Given the function length", () => {
         expect(resultReturned).toBe(expectedResult);
       });
     });
+    describe("When given the array of 1,2,3 and a `classic`string ", () => {
+      test("Then it should return and array with 4", () => {
+        const array = [1, 2, 3];
+        const value = "classic";
+
+        const expectedResult = 4;
+        const resultReturned = push(array, value);
+
+        expect(resultReturned).toBe(expectedResult);
+      });
+    });
   });
   describe("Given the function pop", () => {
     describe("When given the array of 1,2,3 ", () => {
@@ -41,6 +52,16 @@ describe("Given the function length", () => {
         const array = [1, 2, 3];
 
         const expectedResult = 3;
+        const resultReturned = pop(array);
+
+        expect(resultReturned).toBe(expectedResult);
+      });
+    });
+    describe("When given an empty array ", () => {
+      test("Then it should return undefined  ", () => {
+        const array = [];
+
+        const expectedResult = undefined;
         const resultReturned = pop(array);
 
         expect(resultReturned).toBe(expectedResult);
@@ -95,54 +116,23 @@ describe("Given the function length", () => {
     });
   });
   describe("Given the function some", () => {
-    describe("When given the array of 1,2,3  and another one with 4 ,5", () => {
-      test("Then it should return a 4 ", () => {
+    describe("When given the array of 1,2,3  and a callback with the number 10", () => {
+      test("Then it should return false", () => {
         const array = [1, 2, 3];
-        const newNumbers = 4;
 
-        const expectedResult = 4;
-        const resultReturned = unshift(array, newNumbers);
+        const expectedResult = false;
+        const resultReturned = some(array, (array) => array > 10);
 
         expect(resultReturned).toBe(expectedResult);
       });
     });
   });
-});
+  describe("When given the array of 1,2,3  and another one with 4 ,5", () => {
+    test("Then it should return a 4 ", () => {
+      const array = [1, 2, 3];
 
-describe("Given the function newSome", () => {
-  describe("When given the list of 1, 2, 3, 5 and the callback of even", () => {
-    test("Then it should return true", () => {
-      const array = [1, 2, 3, 5];
-      const even = (element) => element % 2 === 0;
-
-      const expectedResult = true;
-      const resultReturned = index.newSome(array, even);
-
-      expect(resultReturned).toBe(expectedResult);
-    });
-  });
-});
-
-describe("Given the function newFind", () => {
-  describe("When given the list Marco, Andoni, Pachi and we search for Pachi", () => {
-    test("Then it should return Pachi", () => {
-      const wordList = ["Marco", "Andoni", "Pachi"];
-      const wordToSearch = "Pachi";
-
-      const expectedResult = "Pachi";
-      const resultReturned = index.newFind(wordList, wordToSearch);
-
-      expect(resultReturned).toBe(expectedResult);
-    });
-  });
-
-  describe("When given the list 1, 2, 3, 4, 5, 6, 7 and we search for 4", () => {
-    test("Then it should return Pachi", () => {
-      const wordList = [1, 2, 3, 4, 5, 6, 7];
-      const wordToSearch = 4;
-
-      const expectedResult = 4;
-      const resultReturned = index.newFind(wordList, wordToSearch);
+      const expectedResult = false;
+      const resultReturned = some(array, (array) => array > 10);
 
       expect(resultReturned).toBe(expectedResult);
     });
