@@ -62,7 +62,7 @@ const unshift = (array, ...newElement) => {
 const some = (array, callBack) => {
   for (let i = 1; i < array.length; i++) {
     const element = array[i];
-    if (callBack(element)) {
+    if (callBack(element) === true) {
       return true;
     }
   }
@@ -70,4 +70,17 @@ const some = (array, callBack) => {
   return false;
 };
 
-export { length, push, pop, shift, unshift, some };
+const every = (array, callBack) => {
+  let isVeridic = false;
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    isVeridic = callBack(element);
+    if (!isVeridic) {
+      return isVeridic;
+    }
+  }
+
+  return isVeridic;
+};
+
+export { length, push, pop, shift, unshift, some, every };
