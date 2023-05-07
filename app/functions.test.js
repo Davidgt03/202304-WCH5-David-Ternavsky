@@ -1,4 +1,14 @@
-import { length, push, pop, shift, unshift, some } from "./functions.js";
+import {
+  length,
+  push,
+  pop,
+  shift,
+  unshift,
+  some,
+  every,
+  find,
+  filter,
+} from "./functions.js";
 
 describe("Given the function length", () => {
   describe("When given the array of 1, 2 ,3", () => {
@@ -135,6 +145,73 @@ describe("Given the function length", () => {
       const resultReturned = some(array, (array) => array > 10);
 
       expect(resultReturned).toBe(expectedResult);
+    });
+  });
+  describe("Given the function every", () => {
+    describe("When given the array with this numbers 1,2,4,5,6 and you put a value of  < 5", () => {
+      test("Then it should return a true ", () => {
+        const array = [1, 2, 3, 4, 5, 6];
+
+        const expectedResult = false;
+        const resultReturned = every(array, (number) => number > 5);
+
+        expect(resultReturned).toBe(expectedResult);
+      });
+    });
+    describe("When given the array with this numbers 1,2,4,5,6 and you put a value of  < 10", () => {
+      test("Then it should return a true ", () => {
+        const array = [1, 2, 3, 4, 5, 6];
+
+        const expectedResult = true;
+        const resultReturned = every(array, (number) => number < 10);
+
+        expect(resultReturned).toBe(expectedResult);
+      });
+    });
+  });
+  describe("Given the function find", () => {
+    describe("When given the array with this numbers 1,2,4,5,6 and you put a value of  < 3", () => {
+      test("Then it should return a 3 ", () => {
+        const array = [1, 2, 3, 4, 5, 6];
+
+        const expectedResult = 3;
+        const resultReturned = find(array, (number) => number >= 3);
+
+        expect(resultReturned).toBe(expectedResult);
+      });
+    });
+    describe("When given the array with this numbers 1,2,4,5,6 and you put a value of  < 3", () => {
+      test("Then it should return a 3 ", () => {
+        const array = [1, 2];
+
+        const expectedResult = false;
+        const resultReturned = find(array, (number) => number >= 3);
+
+        expect(resultReturned).toBe(expectedResult);
+      });
+    });
+  });
+
+  describe("Given the function filter", () => {
+    describe("When given the array with this numbers 1,2,4,5,6 and you put a value of  < 3", () => {
+      test("Then it should return array with 4,5,6 ", () => {
+        const array = [1, 2, 3, 4, 5, 6];
+
+        const expectedResult = [4, 5, 6];
+        const resultReturned = filter(array, (number) => number > 3);
+
+        expect(resultReturned).toStrictEqual(expectedResult);
+      });
+    });
+    describe("When given the array with this numbers 1,2, and you put a value of  < 3", () => {
+      test("Then it should return an empty array ", () => {
+        const array = [1, 2];
+
+        const expectedResult = [];
+        const resultReturned = filter(array, (number) => number > 3);
+
+        expect(resultReturned).toStrictEqual(expectedResult);
+      });
     });
   });
 });
